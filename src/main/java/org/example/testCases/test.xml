@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testSuite>
+    <service>
+        <input>1</input>
+        <serviceId>001</serviceId>
+        <output>5000</output>
+    </service>
+    <service>
+        <input>2</input>
+        <serviceId>002</serviceId>
+        <output>5001</output>
+    </service>
+</testSuite>

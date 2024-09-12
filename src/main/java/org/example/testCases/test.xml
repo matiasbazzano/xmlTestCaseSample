@@ -10,4 +10,14 @@
         <serviceId>002</serviceId>
         <output>5001</output>
     </service>
+    <service>
+        <input>3</input>
+        <serviceId>001</serviceId>
+        <output>5002</output>
+    </service>
+    <service>
+        <input>0</input>
+        <serviceId>000</serviceId>
+        <output>0000</output>
+    </service>
 </testSuite>

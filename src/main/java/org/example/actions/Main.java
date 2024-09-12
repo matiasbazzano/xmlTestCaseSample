@@ -3,23 +3,20 @@ package org.example.actions;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class Main {
-    public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
+    public static void main(String[] args) {
         serviceAction action = new serviceAction();
 
-        String input = "1";
-        String expectedOutput = "serviceId: 001, output: 5000";
+        // ID of the service to check
+        String inputServiceId = "1";
 
-        String result = action.validateInputAndGetDetails(input);
-
-        System.out.println(result);
-
-        if (expectedOutput.equals(result)) {
-            System.out.println("Success.");
-        } else {
-            System.out.println("Unexpected output.");
-            System.out.println("Expected output: " + expectedOutput);
+        try {
+            String result = action.validateInputAndGetDetails(inputServiceId);
+            System.out.println(result);
+        } catch (ParserConfigurationException | SAXException | IOException | SQLException e) {
+            e.printStackTrace();
         }
     }
 }

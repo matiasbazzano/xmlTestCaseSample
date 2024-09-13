@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testCase2>
+    <sqlStatement>
+        INSERT OR IGNORE INTO services (id, serviceName, serviceBalance) VALUES (2, 'MASTERCARD', '$1500');
+    </sqlStatement>
+
+    <sqlStatement>
+        SELECT id, serviceName, serviceBalance FROM services WHERE id = 2;
+    </sqlStatement>
+
+    <serviceTestData>
+        <serviceId>2</serviceId>
+        <expectedServiceName>MASTERCARD</expectedServiceName>
+        <expectedServiceBalance>$1500</expectedServiceBalance>
+    </serviceTestData>
+</testCase2>

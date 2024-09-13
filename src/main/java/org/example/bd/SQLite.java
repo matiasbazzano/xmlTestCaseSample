@@ -63,17 +63,20 @@ public class SQLite {
         conn.close();
     }
 
+    public void deleteAll() throws SQLException {
+        String sql = "DELETE FROM services";
+        Connection conn = this.connect();
+        Statement stmt = conn.createStatement();
+        stmt.executeUpdate(sql);
+        stmt.close();
+        conn.close();
+    }
+
     public static void main(String[] args) throws SQLException {
         SQLite db = new SQLite();
 
+        // db.deleteAll();
         // db.createNewTable();
-
-        // db.insert("1", "Visa", "$5500");
-        // db.insert("2", "Mastercard", "$3350");
-        // db.insert("3", "American Express", "$300");
-        // db.insert("4", "PayPal", "$1670");
-        // db.insert("5", "Discover", "$2100");
-
         db.selectAll();
     }
 }

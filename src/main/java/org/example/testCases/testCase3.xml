@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testCase3>
+    <sqlStatement>
+        INSERT OR IGNORE INTO services (id, serviceName, serviceBalance) VALUES (3, 'UNIONPAY', '$2800');
+    </sqlStatement>
+
+    <sqlStatement>
+        SELECT id, serviceName, serviceBalance FROM services WHERE id = 3;
+    </sqlStatement>
+
+    <serviceTestData>
+        <serviceId>3</serviceId>
+        <expectedServiceName>FAILED-TEST</expectedServiceName>
+        <expectedServiceBalance>$2800</expectedServiceBalance>
+    </serviceTestData>
+</testCase3>

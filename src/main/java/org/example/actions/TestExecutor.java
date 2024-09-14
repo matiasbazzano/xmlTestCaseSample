@@ -9,9 +9,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.xml.sax.SAXException;
 
@@ -26,59 +23,62 @@ public class TestExecutor {
         Document doc = dBuilder.parse(inputFile);
         doc.getDocumentElement().normalize();
 
-        NodeList sqlStatementList = doc.getElementsByTagName("sqlStatement");
+        NodeList createServiceList = doc.getElementsByTagName("createNewService");
+        if (createServiceList.getLength() > 0) {
+            Element createServiceElement = (Element) createServiceList.item(0);
+            String serviceId = getTagValue("serviceId", createServiceElement);
+            String serviceName = getTagValue("serviceName", createServiceElement);
+            String serviceBalance = getTagValue("serviceBalance", createServiceElement);
+
+            db.insert(serviceId, serviceName, serviceBalance, null);
+        }
+
+        NodeList applyStatusList = doc.getElementsByTagName("applyStatus");
+        if (applyStatusList.getLength() > 0) {
+            Element applyStatusElement = (Element) applyStatusList.item(0);
+            String serviceId = getTagValue("serviceId", applyStatusElement);
+            String statusType = getTagValue("statusType", applyStatusElement);
+
+            db.updateServiceStatus(serviceId, statusType);
+        }
+
+        NodeList selectServiceList = doc.getElementsByTagName("selectCreatedService");
+        String selectedServiceId = null;
+        if (selectServiceList.getLength() > 0) {
+            Element selectServiceElement = (Element) selectServiceList.item(0);
+            selectedServiceId = getTagValue("serviceId", selectServiceElement);
+        }
+
         NodeList serviceTestDataList = doc.getElementsByTagName("serviceTestData");
-
-        Connection conn = db.connect();
-
-        // INSERT
-        if (sqlStatementList.getLength() > 0) {
-            String sqlInsert = sqlStatementList.item(0).getTextContent().trim();
-            executeSql(conn, sqlInsert);
-        }
-
-        // SELECT
-        String sqlSelect = null;
-        if (sqlStatementList.getLength() > 1) {
-            sqlSelect = sqlStatementList.item(1).getTextContent().trim();
-        }
-
         String expectedServiceName = null;
         String expectedServiceBalance = null;
+        String expectedServiceStatus = null;
         if (serviceTestDataList.getLength() > 0) {
-            Element serviceElement = (Element) serviceTestDataList.item(0);
-            expectedServiceName = getTagValue("expectedServiceName", serviceElement);
-            expectedServiceBalance = getTagValue("expectedServiceBalance", serviceElement);
+            Element serviceTestDataElement = (Element) serviceTestDataList.item(0);
+            expectedServiceName = getTagValue("expectedServiceName", serviceTestDataElement);
+            expectedServiceBalance = getTagValue("expectedServiceBalance", serviceTestDataElement);
+            expectedServiceStatus = getTagValue("expectedServiceStatus", serviceTestDataElement);
         }
 
-        String dbServiceName = null;
-        String dbServiceBalance = null;
-        if (sqlSelect != null) {
-            PreparedStatement pstmt = conn.prepareStatement(sqlSelect);
-            ResultSet rs = pstmt.executeQuery();
-            if (rs.next()) {
-                dbServiceName = rs.getString("serviceName");
-                dbServiceBalance = rs.getString("serviceBalance");
+        if (selectedServiceId != null) {
+            int serviceId = Integer.parseInt(selectedServiceId);
+            SQLite.ServiceData serviceData = db.getServiceDataById(serviceId);
+
+            if (expectedServiceName != null && expectedServiceBalance != null && expectedServiceStatus != null && serviceData != null) {
+                String formattedServiceBalance = serviceData.serviceBalance;
+
+                if (expectedServiceName.equals(serviceData.serviceName) &&
+                        expectedServiceBalance.equals(formattedServiceBalance) &&
+                        expectedServiceStatus.equals(serviceData.serviceStatus)) {
+                    System.out.println("\nTest passed.");
+                } else {
+                    System.out.println("\nTest failed.\n");
+                    System.out.println("Expected:\nserviceName: " + expectedServiceName + "\nserviceBalance: " + expectedServiceBalance + "\nserviceStatus: " + expectedServiceStatus + "\n");
+                    System.out.println("Actual:\nserviceName: " + serviceData.serviceName + "\nserviceBalance: " + formattedServiceBalance + "\nserviceStatus: " + serviceData.serviceStatus);
+                }
+            } else {
+                System.out.println("Test failed: Service data not found.");
             }
-            rs.close();
-            pstmt.close();
-        }
-
-        conn.close();
-
-        if (expectedServiceName != null && expectedServiceBalance != null &&
-                expectedServiceName.equals(dbServiceName) && expectedServiceBalance.equals(dbServiceBalance)) {
-            System.out.println("Test passed.");
-        } else {
-            System.out.println("Test failed.");
-            System.out.println("Expected - serviceName: " + expectedServiceName + ", serviceBalance: " + expectedServiceBalance);
-            System.out.println("Actual - serviceName: " + dbServiceName + ", serviceBalance: " + dbServiceBalance);
-        }
-    }
-
-    private void executeSql(Connection conn, String sql) throws SQLException {
-        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.executeUpdate();
         }
     }
 

@@ -23,4 +23,7 @@
         <expectedServiceStatus>Chargeback</expectedServiceStatus>
     </serviceTestData>
 
+    <clearDataBaseData>
+        <selectOption>Y</selectOption>
+    </clearDataBaseData>
 </testCase3>

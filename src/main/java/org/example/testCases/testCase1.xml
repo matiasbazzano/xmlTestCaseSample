@@ -23,4 +23,7 @@
         <expectedServiceStatus>Authorization</expectedServiceStatus>
     </serviceTestData>
 
+    <clearDataBaseData>
+        <selectOption>Y</selectOption>
+    </clearDataBaseData>
 </testCase1>

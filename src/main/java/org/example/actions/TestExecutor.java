@@ -80,6 +80,16 @@ public class TestExecutor {
                 System.out.println("Test failed: Service data not found.");
             }
         }
+
+        NodeList clearDataBaseDataList = doc.getElementsByTagName("clearDataBaseData");
+        if (serviceTestDataList.getLength() > 0) {
+            Element clearDataBaseDataElement = (Element) clearDataBaseDataList.item(0);
+            String selectOption = getTagValue("selectOption", clearDataBaseDataElement);
+
+            if ("Y".equals(selectOption)) {
+                db.deleteAll();
+            }
+        }
     }
 
     private String getTagValue(String tagName, Element element) {

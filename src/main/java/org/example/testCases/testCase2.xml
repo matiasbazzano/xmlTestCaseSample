@@ -23,4 +23,7 @@
         <expectedServiceStatus>Refund</expectedServiceStatus>
     </serviceTestData>
 
+    <clearDataBaseData>
+        <selectOption>Y</selectOption>
+    </clearDataBaseData>
 </testCase2>

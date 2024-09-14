@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testCase1>
+<testCase4>
 
     <createNewService>
-        <serviceId>1</serviceId>
-        <serviceName>VISA</serviceName>
-        <serviceBalance>$9900</serviceBalance>
+        <serviceId>4</serviceId>
+        <serviceName>DISCOVER</serviceName>
+        <serviceBalance>$0</serviceBalance>
     </createNewService>
 
     <applyStatus>
-        <serviceId>1</serviceId>
+        <serviceId>4</serviceId>
         <statusType>Authorization</statusType>
     </applyStatus>
 
     <selectCreatedService>
-        <serviceId>1</serviceId>
+        <serviceId>4</serviceId>
     </selectCreatedService>
 
     <serviceTestData>
-        <serviceId>1</serviceId>
-        <expectedServiceName>VISA</expectedServiceName>
-        <expectedServiceBalance>$9900</expectedServiceBalance>
+        <serviceId>4</serviceId>
+        <expectedServiceName>DISCOVER</expectedServiceName>
+        <expectedServiceBalance>$0</expectedServiceBalance>
         <expectedServiceStatus>Authorization</expectedServiceStatus>
     </serviceTestData>
 
@@ -27,4 +27,4 @@
         <selectOption>Y</selectOption>
     </clearDataBaseData>
 
-</testCase1>
+</testCase4>

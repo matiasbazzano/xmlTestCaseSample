@@ -27,4 +27,8 @@
         <selectOption>Y</selectOption>
     </clearDataBaseData>
 
+    <displayDataFromTable>
+        <tableName>services</tableName>
+    </displayDataFromTable>
+
 </testCase4>

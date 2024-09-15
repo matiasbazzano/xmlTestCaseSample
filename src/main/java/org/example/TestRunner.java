@@ -1,9 +1,6 @@
 package org.example;
 
-import org.example.services.ApplyStatus;
-import org.example.services.ClearDataBaseData;
-import org.example.services.CreateNewService;
-import org.example.services.ServiceTestData;
+import org.example.services.*;
 import org.example.data.data;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
@@ -30,6 +27,10 @@ public class TestRunner {
             // Clear database
             ClearDataBaseData clearDatabaseData = new ClearDataBaseData();
             clearDatabaseData.clearData(xmlFilePath);
+
+            // Display data from table
+            DisplayDataFromTable displayDataFromTable = new DisplayDataFromTable();
+            displayDataFromTable.display(xmlFilePath);
 
         } catch (ParserConfigurationException | SAXException | IOException | SQLException e) {
             e.printStackTrace();

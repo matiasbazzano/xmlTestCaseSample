@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testCase5>
+
+    <displayDataFromTable>
+        <tableName>services</tableName>
+    </displayDataFromTable>
+
+</testCase5>

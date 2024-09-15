@@ -80,6 +80,29 @@ public class SQLite {
         conn.close();
     }
 
+    public void selectDataFromTable(String tableName) throws SQLException {
+        String sql = "SELECT * FROM " + tableName;
+        Connection conn = this.connect();
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(sql);
+
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String serviceName = rs.getString("serviceName");
+            String serviceBalance = rs.getString("serviceBalance");
+            String status = rs.getString("status");
+
+            System.out.println("ID: " + id);
+            System.out.println("Service Name: " + serviceName);
+            System.out.println("Service Balance: " + serviceBalance);
+            System.out.println("Status: " + status);
+            System.out.println();
+        }
+        rs.close();
+        stmt.close();
+        conn.close();
+    }
+
     public void deleteAll() throws SQLException {
         String sql = "DELETE FROM services";
         Connection conn = this.connect();

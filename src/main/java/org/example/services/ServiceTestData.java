@@ -49,9 +49,9 @@ public class ServiceTestData {
                 if (expectedServiceName.equals(serviceData.serviceName) &&
                         expectedServiceBalance.equals(formattedServiceBalance) &&
                         expectedServiceStatus.equals(serviceData.serviceStatus)) {
-                    System.out.println("\nTest passed.");
+                    System.out.println("\nDB Check: Test PASSED.");
                 } else {
-                    System.out.println("\nTest failed.\n");
+                    System.out.println("\nDB Check: Test FAILED.\n");
                     System.out.println("Expected:\nserviceName: " + expectedServiceName + "\nserviceBalance: " + expectedServiceBalance + "\nserviceStatus: " + expectedServiceStatus + "\n");
                     System.out.println("Actual:\nserviceName: " + serviceData.serviceName + "\nserviceBalance: " + formattedServiceBalance + "\nserviceStatus: " + serviceData.serviceStatus);
                 }

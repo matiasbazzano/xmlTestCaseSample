@@ -27,6 +27,13 @@
         <generateHTML>Y</generateHTML>
     </frontend>
 
+    <uiTesting>
+        <serviceId>4</serviceId>
+        <expectedServiceName>DISCOVER</expectedServiceName>
+        <expectedServiceBalance>$0</expectedServiceBalance>
+        <expectedServiceStatus>Authorization</expectedServiceStatus>
+    </uiTesting>
+
     <clearDataBaseData>
         <selectOption>Y</selectOption>
     </clearDataBaseData>

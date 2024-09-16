@@ -27,6 +27,13 @@
         <generateHTML>Y</generateHTML>
     </frontend>
 
+    <uiTesting>
+        <serviceId>3</serviceId>
+        <expectedServiceName>Fail Test</expectedServiceName>
+        <expectedServiceBalance>$550</expectedServiceBalance>
+        <expectedServiceStatus>Chargeback</expectedServiceStatus>
+    </uiTesting>
+
     <clearDataBaseData>
         <selectOption>Y</selectOption>
     </clearDataBaseData>

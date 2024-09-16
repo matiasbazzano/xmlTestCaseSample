@@ -9,4 +9,5 @@ public class XMLTags {
     public static final String expectedServiceBalance = "expectedServiceBalance";
     public static final String expectedServiceStatus = "expectedServiceStatus";
     public static final String selectOption = "selectOption";
+    public static final String generateHTML = "generateHTML";
 }

@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class TestRunner {
     public static void main(String[] args) {
-        String xmlFilePath = data.testPath;
+        String xmlFilePath = data.testPath + "testCase1.xml";
 
         try {
             // Create new service
@@ -29,8 +29,8 @@ public class TestRunner {
             frontend.generateHTML(xmlFilePath);
 
             // Run Selenium tests
-            // UITesting uiTesting = new UITesting();
-            // uiTesting.runSeleniumTests(xmlFilePath);
+            UITesting uiTesting = new UITesting();
+            uiTesting.runSeleniumTests(xmlFilePath);
 
             // Clear database
             ClearDataBaseData clearDatabaseData = new ClearDataBaseData();

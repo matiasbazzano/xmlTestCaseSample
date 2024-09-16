@@ -27,6 +27,13 @@
         <generateHTML>Y</generateHTML>
     </frontend>
 
+    <uiTesting>
+        <serviceId>1</serviceId>
+        <expectedServiceName>VISA</expectedServiceName>
+        <expectedServiceBalance>$9900</expectedServiceBalance>
+        <expectedServiceStatus>Authorization</expectedServiceStatus>
+    </uiTesting>
+
     <clearDataBaseData>
         <selectOption>Y</selectOption>
     </clearDataBaseData>

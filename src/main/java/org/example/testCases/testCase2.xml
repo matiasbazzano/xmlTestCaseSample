@@ -27,6 +27,13 @@
         <generateHTML>Y</generateHTML>
     </frontend>
 
+    <uiTesting>
+        <serviceId>2</serviceId>
+        <expectedServiceName>MASTERCARD</expectedServiceName>
+        <expectedServiceBalance>$1500</expectedServiceBalance>
+        <expectedServiceStatus>Refund</expectedServiceStatus>
+    </uiTesting>
+
     <clearDataBaseData>
         <selectOption>Y</selectOption>
     </clearDataBaseData>

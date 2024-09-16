@@ -23,6 +23,10 @@
         <expectedServiceStatus>Refund</expectedServiceStatus>
     </serviceTestData>
 
+    <frontend>
+        <generateHTML>Y</generateHTML>
+    </frontend>
+
     <clearDataBaseData>
         <selectOption>Y</selectOption>
     </clearDataBaseData>

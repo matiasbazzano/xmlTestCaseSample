@@ -24,9 +24,21 @@ public class TestRunner {
             ServiceTestData serviceTestData = new ServiceTestData();
             serviceTestData.testData(xmlFilePath);
 
+            // Generate HTML with service data
+            Frontend frontend = new Frontend();
+            frontend.generateHTML(xmlFilePath);
+
+            // Run Selenium tests
+            // UITesting uiTesting = new UITesting();
+            // uiTesting.runSeleniumTests(xmlFilePath);
+
             // Clear database
             ClearDataBaseData clearDatabaseData = new ClearDataBaseData();
             clearDatabaseData.clearData(xmlFilePath);
+
+            // Clean UI folder
+            // CleanDirectory cleanDirectory = new CleanDirectory();
+            // cleanDirectory.clean(xmlFilePath);
 
             // Display data from table
             DisplayDataFromTable displayDataFromTable = new DisplayDataFromTable();
@@ -34,6 +46,8 @@ public class TestRunner {
 
         } catch (ParserConfigurationException | SAXException | IOException | SQLException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }

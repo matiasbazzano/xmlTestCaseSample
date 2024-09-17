@@ -33,12 +33,12 @@ public class TestRunner {
             uiTesting.runSeleniumTests(xmlFilePath);
 
             // Clear database
-            ClearDataBaseData clearDatabaseData = new ClearDataBaseData();
-            clearDatabaseData.clearData(xmlFilePath);
+            ClearDatabase clearDatabase = new ClearDatabase();
+            clearDatabase.clearData(xmlFilePath);
 
             // Clean UI folder
-            // CleanDirectory cleanDirectory = new CleanDirectory();
-            // cleanDirectory.clean(xmlFilePath);
+            CleanDirectory cleanDirectory = new CleanDirectory();
+            cleanDirectory.clean(xmlFilePath);
 
             // Display data from table
             DisplayDataFromTable displayDataFromTable = new DisplayDataFromTable();

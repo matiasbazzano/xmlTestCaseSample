@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testCase5>
 
+    <clearDatabase>
+        <selectOption>Y</selectOption>
+    </clearDatabase>
+
     <displayDataFromTable>
         <tableName>services</tableName>
     </displayDataFromTable>

@@ -14,7 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class ClearDataBaseData {
+public class ClearDatabase {
 
     private SQLite db = new SQLite();
 
@@ -25,10 +25,10 @@ public class ClearDataBaseData {
         Document doc = dBuilder.parse(inputFile);
         doc.getDocumentElement().normalize();
 
-        NodeList clearDataBaseDataList = doc.getElementsByTagName("clearDataBaseData");
-        if (clearDataBaseDataList.getLength() > 0) {
-            Element clearDataBaseDataElement = (Element) clearDataBaseDataList.item(0);
-            String selectOption = XMLUtils.getTagValue("selectOption", clearDataBaseDataElement);
+        NodeList clearDatabaseList = doc.getElementsByTagName("clearDatabase");
+        if (clearDatabaseList.getLength() > 0) {
+            Element clearDatabaseElement = (Element) clearDatabaseList.item(0);
+            String selectOption = XMLUtils.getTagValue("selectOption", clearDatabaseElement);
 
             if ("Y".equals(selectOption)) {
                 db.deleteAll();

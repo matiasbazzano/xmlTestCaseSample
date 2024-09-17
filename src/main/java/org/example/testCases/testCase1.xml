@@ -34,9 +34,13 @@
         <expectedServiceStatus>Authorization</expectedServiceStatus>
     </uiTesting>
 
-    <clearDataBaseData>
+    <clearDatabase>
         <selectOption>Y</selectOption>
-    </clearDataBaseData>
+    </clearDatabase>
+
+    <cleanDirectory>
+        <path>src/main/java/org/example/ui/</path>
+    </cleanDirectory>
 
     <displayDataFromTable>
         <tableName>services</tableName>
